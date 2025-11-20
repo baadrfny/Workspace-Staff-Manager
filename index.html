@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Workspace Staff Manager</title>
+</head>
+<body>
+    <section>
+        <div class="sideBar">
+            <div class="firstSide">
+                <h2 style="color: azure; margin-bottom: 15px;">Personnel</h2>
+                <button class="btnAjouter">+ Ajouter un employé</button>
+            </div>
+        
+            <div class="workerCountainer">
+
+                <div class="workerCard">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid gray; padding: 20px; border-radius: 10px; margin: 10px">
+                        <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?cs=srgb&dl=pexels-stefanstefancik-91227.jpg&fm=jpg" style="width: 100px; border-radius: 100%; height: 100px;" alt="">
+                        <h3>Badr Fenni</h3>
+                        <p>recepteur</p>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="mainBar">
+            
+
+            <h2 id="hPlan">Plan d'étage</h2>
+             <!-- ----------------------------------------- -->
+            <div id="divCountainer1">
+                <div class="box conferenceDiv">
+                    <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><i class="fa-regular fa-building"></i> Salle de conférence</h4>
+                    <div class="workerPlace">
+                        <p class="emptyP">This place is empty</p>
+                    </div>
+                    <select name="" class="userSelect">
+                        <option value="" class="nonEffectSelect">Selectionner</option>
+                    </select>
+                </div>
+
+                <!-- ----------------------------------------- -->
+
+                <div class="box receptionDiv recDiv">
+                    <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Réception</h4>
+                    
+                    <div class="workerPlace">
+                        <p class="emptyP">This place is empty</p>
+                        
+                    </div>
+
+                    <select name="" class="userSelect">
+                        <option value="" class="nonEffectSelect">Selectionner</option>
+                    </select>
+                </div>
+
+                 <!-- ----------------------------------------- -->
+
+                <div class="box serveursDiv">
+                    <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle des serveurs</h4>
+                    
+                    <div class="workerPlace">
+                        <p class="emptyP">This place is empty</p>
+                        
+                    </div>
+
+                    <select name="" class="userSelect">
+                        <option value="" class="nonEffectSelect">Selectionner</option>
+                    </select>
+                </div>
+
+                 <!-- ----------------------------------------- -->
+                </div>
+                 <div id="divCountainer2">
+                    <div class="box securiteDiv">
+                        <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle de sécurité</h4>
+                        <div class="workerPlace">
+                            <p class="emptyP">This place is empty</p>
+                        </div>
+                        <select name="" class="userSelect">
+                            <option value="" class="nonEffectSelect">Selectionner</option>
+                        </select>
+                    </div>
+
+                     <!-- ----------------------------------------- -->
+
+                    <div class="box personnelDiv">
+                        <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle du personnel</h4>
+                        <div class="workerPlace">
+                            <p class="emptyP">This place is empty</p>
+                        </div>
+                        <select name="" class="userSelect">
+                            <option value="" class="nonEffectSelect">Selectionner</option>
+                        </select>
+                    </div>
+
+                     <!-- ----------------------------------------- -->
+
+                    <div class="box archivesDiv">
+                        <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle d’archives</h4>
+                        <div class="workerPlace" >
+                            <p class="emptyP">This place is empty</p>
+                        </div>
+                        <select name="" class="userSelect">
+                            <option value="" class="nonEffectSelect">Selectionner</option>
+                        </select>
+                    </div>
+                 </div>
+                
+            
+            
+        </div>
+    </section>
+
+    <div id="addModal" >
+        
+        <div class="secondModal" >
+            <h3>Ajouter un employé</h3>
+            <div class="thirdModal">
+                <input id="workerName" placeholder="Nom">
+                <input id="workerEmail" placeholder="Email">
+                <select name="" id="selectWorker" >
+                    <option value="Selectionner">Selectionner</option>
+                    <option value="Réceptionniste">Réceptionniste</option>
+                    <option value="Technicien">Technicien</option>
+                    <option value="Agents de sécurité">Agents de sécurité</option>
+                    <option value="Manager">Manager </option>
+                    <option value="Nettoyage">Nettoyage </option>
+                </select>
+                <input type="tel" name="" id="inputPhone" placeholder="Phone number">
+                <input type="text" id="urlInput" placeholder=" URL">
+            </div>
+
+            <div>
+                <div id="expList">
+                    <h3>Experience :</h3>
+                    <input type="text" class="inputEntreprise"  placeholder="entreprise">
+                    <input type="text" class="inputPost" placeholder="Poste">
+                    <input type="text" class="inputPeride" placeholder="Periode">
+
+                    <button id="addExpBtn" style="background-color: green; margin: 20px 5px; border-radius: 7px; border:  none; padding: 10px 20px; color: aliceblue; font-weight: 600; cursor: pointer;">Add Experience</button>
+                    <div id="expContainer"></div>
+
+                </div>
+                <button class="EnregistrerBtn" style="background-color: green; margin: 20px 5px; border-radius: 7px; border:  none; padding: 10px 20px; color: aliceblue; font-weight: 600; cursor: pointer;">Enregistrer</button>
+                <button class="AnnuleBtn" style="background-color: rgb(255, 255, 255); margin: 20px 5px; border-radius: 7px; border:  none; padding: 10px 20px; color: rgb(27, 27, 27); font-weight: 600; cursor: pointer;">Annule</button>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <div class="infoBox">
+                <div class="infoContent">
+                    <h2 id="infoName"></h2>
+                    <p id="infoEmail"></p>
+                    <p id="infoRole"></p>
+                    <button id="closeInfo1">Fermer</button>
+                    
+                </div>
+    </div>
+
+    <div id="infoModal">
+        <div class="box">
+           <!-- <h3 id="infoName"></h3>
+           <p id="infoEmail"></p> -->
+           <img src="" alt="" id="infoImgModal">
+            <h3 id="infoNameModal"></h3>
+            <p id="infoSpecialModal"></p>
+            <p id="infoEmailModal"></p>
+            <p id="infoNumberModal"></p>
+            <div id="expInfoContainer"></div>
+
+        
+           
+
+
+            <button id="removeCard">Remove</button>
+           <button id="closeInfo2">Fermer</button>
+        </div>
+    </div>
+
+
+</body>
+
+
+    <script src="script.js"></script>
+
+
+</html>
