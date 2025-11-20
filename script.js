@@ -680,4 +680,6 @@ document.getElementById("removeCard").addEventListener("click", function(){
     }
     document.getElementById("infoModal").style.display = "none";
 
+    
+
 });
