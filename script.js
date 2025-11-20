@@ -21,12 +21,9 @@ const box = document.querySelector(".box")
 
 
 
-
-
+let assignedWorkers = JSON.parse(localStorage.getItem('assignedWorkers')) || [];
 
 let currentElementToRemove = null;
-
-
 
 const salleSpecialMap = {
     "receptionDiv": "Réceptionniste",
@@ -37,19 +34,32 @@ const salleSpecialMap = {
     "archivesDiv": "Manager"
 };
 
-
 const nonEffect = [];
 
+
+function isWorkerAssigned(workerId) {
+    return assignedWorkers.includes(workerId.toString());
+}
+
+function assignWorker(workerId) {
+    if (!isWorkerAssigned(workerId)) {
+        assignedWorkers.push(workerId.toString());
+        localStorage.setItem('assignedWorkers', JSON.stringify(assignedWorkers));
+    }
+}
+
+function unassignWorker(workerId) {
+    assignedWorkers = assignedWorkers.filter(id => id !== workerId.toString());
+    localStorage.setItem('assignedWorkers', JSON.stringify(assignedWorkers));
+}
 
 btnAjouter.addEventListener("click", function addOne(){
     addModal.style.display = "flex";
 });
 
-
 AnnuleBtn.addEventListener("click", function annuleAction(){
     addModal.style.display = "none";
 });
-
 
 const addExpBtn = document.querySelector("#addExpBtn")
 const expContainer = document.querySelector("#expContainer")
@@ -78,22 +88,14 @@ addExpBtn.addEventListener("click", function() {
     document.querySelector(".inputPeride").value = ""
 })
 
-
 const expContainerModal = document.querySelector("#expInfoContainer");
 expContainerModal.innerHTML = "";
 
-
-
-
-
 EnregistrerBtn.addEventListener("click", function saveUser(){
-
-
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     const namePattern = /^[a-zA-Z\s]{2,30}$/;
     const phonePattern = /^\d{10}$/;
     const urlPattern = /^https?:\/\/[^\s]+\.(png|jpg|jpeg|gif|svg)(\?.*)?$/;
-
 
     if(!namePattern.test(inputName.value)){
         alert("Nom invalide");
@@ -118,9 +120,6 @@ EnregistrerBtn.addEventListener("click", function saveUser(){
 
     const savedEmployees = localStorage.getItem("employees");
 
-    
-
-
     const OneCard = document.createElement("div");
     const userImg = document.createElement("img")
     userImg.src = inputURL.value
@@ -140,11 +139,8 @@ EnregistrerBtn.addEventListener("click", function saveUser(){
     OneCard.appendChild(special);
     OneCard.appendChild(OneEmail);
     
-    
-    
     addModal.style.display = "none";
 
-    
     const usersObj = {
         id: Date.now(), 
         name: inputName.value,
@@ -158,10 +154,8 @@ EnregistrerBtn.addEventListener("click", function saveUser(){
             post: expDiv.querySelector('p:nth-child(2)').textContent.replace('Poste: ', ''),
             periode: expDiv.querySelector('p:nth-child(3)').textContent.replace('Période: ', '')
         }))
-
     };
 
-    
     nonEffect.push(usersObj);
     localStorage.setItem("employees", JSON.stringify(nonEffect));
 
@@ -176,11 +170,6 @@ EnregistrerBtn.addEventListener("click", function saveUser(){
     inputURL.value = "";
     inputPhone.value = "";
 
-
-
-    
-
-
     OneCard.onclick = function(){
         document.querySelector("#infoImgModal").src = usersObj.urlImg
         document.querySelector("#infoImgModal").style = "width: 100px; border-radius: 100%; height: 100px;"
@@ -188,12 +177,9 @@ EnregistrerBtn.addEventListener("click", function saveUser(){
         document.querySelector("#infoNumberModal").textContent = "Phone : " + usersObj.phone
         document.querySelector("#infoNameModal").textContent = "Name : "+ usersObj.name;
 
-
-
         console.log(usersObj.name);
         document.querySelector("#infoEmailModal").textContent = "Email : " +  usersObj.email;
         document.querySelector("#infoModal").style.display = "grid";
-
 
         if (usersObj.expArray.length > 0) {
             expContainerModal.innerHTML = '<h4>Experience :</h4>';
@@ -204,32 +190,22 @@ EnregistrerBtn.addEventListener("click", function saveUser(){
             <p>Période: ${exp.periode}</p>
             <hr>`;
         });
-}
+    }
 
-currentElementToRemove = OneCard;
-
-        
+    currentElementToRemove = OneCard;
     };
 });
-
-
 
 const receptionDiv = document.querySelector(".receptionDiv");
 const recDiv = document.querySelector(".recDiv");
 
-
-
-
 receptionDiv.addEventListener("click", function(){
     const roleNeeded = ["Réceptionniste" , "Manager"];
     const receptionUsers = nonEffect.filter(user => roleNeeded.includes(user.special));
-    
-    
 
     const select = receptionDiv.querySelector(".userSelect"); 
     const workerPlace = receptionDiv.querySelector(".workerPlace"); 
     const emptyP = workerPlace.querySelector(".emptyP"); 
-    
 
     select.innerHTML = `<option value="">Selectionner</option>`;
     
@@ -240,10 +216,7 @@ receptionDiv.addEventListener("click", function(){
         select.appendChild(opt);
     });
 
-
-
 select.onchange = function() {
-
     const RecMaxLimit = 3;
     const currentCount = workerPlace.querySelectorAll(".worker-info").length;
 
@@ -261,9 +234,18 @@ select.onchange = function() {
 
     if (selectedUserId) {
 
+
+        if (isWorkerAssigned(selectedUserId)) {
+            alert("This worker has already been assigned to another room!");
+            this.value = "";
+            return;
+        }
+
         const selectedUser = receptionUsers.find(user => user.id == selectedUserId);
         if (!selectedUser) return;
+
         
+        assignWorker(selectedUserId);
 
         if (emptyP) emptyP.style.display = "none";
 
@@ -288,22 +270,11 @@ select.onchange = function() {
 
         select.querySelector(`option[value="${selectedUserId.toString()}"]`).remove();
 
-        
+
     }
 };
- 
+
 });
-
-
-
-// salleSpecialMap = {
-//     "receptionDiv": "Réceptionniste",
-//     "conferenceDiv": "Manager",
-//     "serveursDiv": "Technicien",
-//     "securiteDiv": "Agents de sécurité",
-//     "personnelDiv": "Nettoyage",
-//     "archivesDiv": "Manager"
-// };
 
 const conferenceDiv = document.querySelector(".conferenceDiv");
 
@@ -315,7 +286,6 @@ conferenceDiv.addEventListener("click", function() {
     const workerPlace = conferenceDiv.querySelector(".workerPlace"); 
     const emptyP = workerPlace.querySelector(".emptyP"); 
 
-    
     select.innerHTML = `<option value="">Selectionner</option>`;
 
     conferenceUsers.forEach(user => {
@@ -326,7 +296,6 @@ conferenceDiv.addEventListener("click", function() {
     });
 
     select.onchange = function() {
-
         const ConfMaxLimit = 10;
         const currentCount = workerPlace.querySelectorAll(".worker-info").length;
 
@@ -342,8 +311,18 @@ conferenceDiv.addEventListener("click", function() {
         const selectedUserId = this.value;
         
         if (selectedUserId) {
+           
+
+            if (isWorkerAssigned(selectedUserId)) {
+                alert("This worker has already been assigned to another room!");
+                this.value = "";
+                return;
+            }
 
             const selectedUser = conferenceUsers.find(user => user.id == selectedUserId);
+            
+            
+            assignWorker(selectedUserId);
             
             if (emptyP) emptyP.style.display = "none";
             
@@ -367,8 +346,6 @@ conferenceDiv.addEventListener("click", function() {
             workerPlace.appendChild(workerInfo);
 
             select.querySelector(`option[value="${selectedUserId}"]`).remove();
-
-            
             
         } else {
             if (emptyP) emptyP.style.display = "block";
@@ -376,13 +353,9 @@ conferenceDiv.addEventListener("click", function() {
     };
 });
 
-
-
-
 const serveursDiv = document.querySelector(".serveursDiv");
 
 serveursDiv.addEventListener("click", function() {
-
     const roleNeeded = ["Technicien" , "Manager" , "Nettoyage" ];
     const serveursUsers = nonEffect.filter(user => roleNeeded.includes(user.special));
 
@@ -415,7 +388,18 @@ serveursDiv.addEventListener("click", function() {
         const selectedUserId = this.value;
 
         if (selectedUserId) {
+            
+            
+            if (isWorkerAssigned(selectedUserId)) {
+                alert("This worker has already been assigned to another room!");
+                this.value = "";
+                return;
+            }
+
             const selectedUser = serveursUsers.find(user => user.id == selectedUserId);
+
+                    
+            assignWorker(selectedUserId);
 
             if (emptyP) emptyP.style.display = "none";
 
@@ -443,7 +427,6 @@ serveursDiv.addEventListener("click", function() {
         }
     };
 });
-
 
 const securiteDiv = document.querySelector(".securiteDiv");
 
@@ -480,7 +463,18 @@ securiteDiv.addEventListener("click", function() {
         const selectedUserId = this.value;
 
         if (selectedUserId) {
+            
+            
+            if (isWorkerAssigned(selectedUserId)) {
+                alert("This worker has already been assigned to another room!");
+                this.value = "";
+                return;
+            }
+
             const selectedUser = securiteUsers.find(user => user.id == selectedUserId);
+
+            
+            assignWorker(selectedUserId);
 
             if (emptyP) emptyP.style.display = "none";
 
@@ -549,7 +543,19 @@ personnelDiv.addEventListener("click", function() {
         const selectedUserId = this.value;
 
         if (selectedUserId) {
+            
+            if (isWorkerAssigned(selectedUserId)) {
+                alert("This worker has already been assigned to another room!");
+                this.value = "";
+                return;
+            }
+
             const selectedUser = personnelUsers.find(user => user.id == selectedUserId);
+
+
+
+
+            assignWorker(selectedUserId);
 
             if (emptyP) emptyP.style.display = "none";
 
@@ -577,7 +583,6 @@ personnelDiv.addEventListener("click", function() {
         }
     };
 });
-
 
 const archivesDiv = document.querySelector(".archivesDiv");
 
@@ -614,7 +619,17 @@ archivesDiv.addEventListener("click", function() {
         const selectedUserId = this.value;
 
         if (selectedUserId) {
+            
+            if (isWorkerAssigned(selectedUserId)) {
+                alert("This worker has already been assigned to another room!");
+                this.value = "";
+                return;
+            }
+
             const selectedUser = archivesUsers.find(user => user.id == selectedUserId);
+
+            
+            assignWorker(selectedUserId);
 
             if (emptyP) emptyP.style.display = "none";
 
@@ -644,34 +659,25 @@ archivesDiv.addEventListener("click", function() {
 });
 
 
-
-//    const salleSpecialMap = {
-//     "receptionDiv": "Réceptionniste",
-//     "conferenceDiv": "Manager",
-//     "serveursDiv": "Technicien",
-//     "securiteDiv": "Agents de sécurité",
-//     "personnelDiv": "Nettoyage",
-//     "archivesDiv": "Manager"
-// };
-
-
-
-
-
-
 document.getElementById("closeInfo1").addEventListener("click", function() {
     document.getElementById("infoModal").style.display = "none";
-
 });
 document.getElementById("closeInfo2").addEventListener("click", function() {
     document.getElementById("infoModal").style.display = "none";
-
 });
 
 document.getElementById("removeCard").addEventListener("click", function(){
     if(currentElementToRemove){
+        
+        const workerName = currentElementToRemove.querySelector('h3').textContent;
+        const worker = nonEffect.find(w => w.name === workerName);
+        if (worker) {
+            unassignWorker(worker.id);
+        }
+
         currentElementToRemove.remove();
         currentElementToRemove = null;
     }
     document.getElementById("infoModal").style.display = "none";
+
 });
