@@ -9,7 +9,6 @@ const workerCard = document.querySelector(".workerCard");
 const selectWorker = document.querySelector("#selectWorker");
 const inputEntreprise = document.querySelector(".inputEntreprise");
 const inputPost = document.querySelector(".inputPost");
-const inputPeride = document.querySelector(".inputPeride");
 const inputPhone = document.querySelector("#inputPhone");
 const inputURL = document.querySelector("#urlInput");
 const infoBox = document.querySelector(".infoBox");
@@ -67,9 +66,20 @@ const expContainer = document.querySelector("#expContainer")
 addExpBtn.addEventListener("click", function() {
     const entreprise = document.querySelector(".inputEntreprise").value
     const post = document.querySelector(".inputPost").value
-    const periode = document.querySelector(".inputPeride").value
+    const dateDebut = document.querySelector(".inputDateDebut").value;
+    const dateFin = document.querySelector(".inputDateFin").value;
 
-    if(entreprise === "" || post === "" || periode === ""){
+     if (!dateDebut || !dateFin) {
+        alert("You must enter date !");
+        return;
+    }
+
+    if (new Date(dateDebut) >= new Date(dateFin)) {
+        alert("Your date is wrong");
+        return;
+    }
+
+    if(entreprise === "" || post === ""){
         alert("Entrer toutes les informations de l'expérience")
         return
     }
@@ -78,14 +88,15 @@ addExpBtn.addEventListener("click", function() {
     expDiv.innerHTML = `
         <p>Entreprise: ${entreprise}</p>
         <p>Poste: ${post}</p>
-        <p>Période: ${periode}</p>
+        <p>Période: ${dateDebut} to ${dateFin}</p>
     `
     expDiv.style = "background-color: #ffffffff; border: 1px solid gray; margin: 5px; padding: 5px; border-radius:5px"
     expContainer.appendChild(expDiv)
 
     document.querySelector(".inputEntreprise").value = ""
     document.querySelector(".inputPost").value = ""
-    document.querySelector(".inputPeride").value = ""
+    document.querySelector(".inputDateDebut").value = ""
+    document.querySelector(".inputDateFin").value = ""
 })
 
 const expContainerModal = document.querySelector("#expInfoContainer");
@@ -166,7 +177,8 @@ EnregistrerBtn.addEventListener("click", function saveUser(){
     selectWorker.value = "Selectionner";
     inputEntreprise.value = "";
     inputPost.value = "";
-    inputPeride.value = "";
+    document.querySelector(".inputDateDebut").value = "";
+    document.querySelector(".inputDateFin").value = "";
     inputURL.value = "";
     inputPhone.value = "";
 
@@ -679,7 +691,4 @@ document.getElementById("removeCard").addEventListener("click", function(){
         currentElementToRemove = null;
     }
     document.getElementById("infoModal").style.display = "none";
-
-    
-
 });

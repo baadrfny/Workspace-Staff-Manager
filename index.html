@@ -38,12 +38,12 @@
             <h2 id="hPlan">Plan d'étage</h2>
              <!-- ----------------------------------------- -->
             <div id="divCountainer1">
-                <div class="box conferenceDiv">
+                <div class="boxCon conferenceDiv">
                     <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><i class="fa-regular fa-building"></i> Salle de conférence</h4>
                     <div class="workerPlace">
                         <p class="emptyP">This place is empty</p>
                     </div>
-                    <select name="" class="userSelect">
+                    <select  class="userSelect">
                         <option value="" class="nonEffectSelect">Selectionner</option>
                     </select>
                 </div>
@@ -58,7 +58,7 @@
                         
                     </div>
 
-                    <select name="" class="userSelect">
+                    <select  class="userSelect">
                         <option value="" class="nonEffectSelect">Selectionner</option>
                     </select>
                 </div>
@@ -73,7 +73,7 @@
                         
                     </div>
 
-                    <select name="" class="userSelect">
+                    <select  class="userSelect">
                         <option value="" class="nonEffectSelect">Selectionner</option>
                     </select>
                 </div>
@@ -86,19 +86,19 @@
                         <div class="workerPlace">
                             <p class="emptyP">This place is empty</p>
                         </div>
-                        <select name="" class="userSelect">
+                        <select  class="userSelect">
                             <option value="" class="nonEffectSelect">Selectionner</option>
                         </select>
                     </div>
 
                      <!-- ----------------------------------------- -->
 
-                    <div class="box personnelDiv">
+                    <div class="boxPer personnelDiv">
                         <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle du personnel</h4>
                         <div class="workerPlace">
                             <p class="emptyP">This place is empty</p>
                         </div>
-                        <select name="" class="userSelect">
+                        <select  class="userSelect">
                             <option value="" class="nonEffectSelect">Selectionner</option>
                         </select>
                     </div>
@@ -110,7 +110,7 @@
                         <div class="workerPlace" >
                             <p class="emptyP">This place is empty</p>
                         </div>
-                        <select name="" class="userSelect">
+                        <select  class="userSelect">
                             <option value="" class="nonEffectSelect">Selectionner</option>
                         </select>
                     </div>
@@ -128,7 +128,7 @@
             <div class="thirdModal">
                 <input id="workerName" placeholder="Nom">
                 <input id="workerEmail" placeholder="Email">
-                <select name="" id="selectWorker" >
+                <select  id="selectWorker" >
                     <option value="Selectionner">Selectionner</option>
                     <option value="Réceptionniste">Réceptionniste</option>
                     <option value="Technicien">Technicien</option>
@@ -136,21 +136,22 @@
                     <option value="Manager">Manager </option>
                     <option value="Nettoyage">Nettoyage </option>
                 </select>
-                <input type="tel" name="" id="inputPhone" placeholder="Phone number">
+                <input type="tel"  id="inputPhone" placeholder="Phone number">
                 <input type="text" id="urlInput" placeholder=" URL">
             </div>
 
             <div>
-                <div id="expList">
-                    <h3>Experience :</h3>
-                    <input type="text" class="inputEntreprise"  placeholder="entreprise">
+                <div class="experience-item">
+                    <input type="text" class="inputEntreprise" placeholder="Entreprise">
                     <input type="text" class="inputPost" placeholder="Poste">
-                    <input type="text" class="inputPeride" placeholder="Periode">
-
-                    <button id="addExpBtn" style="background-color: green; margin: 20px 5px; border-radius: 7px; border:  none; padding: 10px 20px; color: aliceblue; font-weight: 600; cursor: pointer;">Add Experience</button>
-                    <div id="expContainer"></div>
-
+                    <input type="date" class="inputDateDebut">
+                    <input type="date" class="inputDateFin">
+                    <button id="addExpBtn" style="background-color: green; margin: 10px 5px; border-radius: 7px; border: none; padding: 8px 15px; color: aliceblue; font-weight: 600; cursor: pointer;">
+                        Add Experience
+                    </button>
                 </div>
+
+                <div id="expContainer"></div>
                 <button class="EnregistrerBtn" style="background-color: green; margin: 20px 5px; border-radius: 7px; border:  none; padding: 10px 20px; color: aliceblue; font-weight: 600; cursor: pointer;">Enregistrer</button>
                 <button class="AnnuleBtn" style="background-color: rgb(255, 255, 255); margin: 20px 5px; border-radius: 7px; border:  none; padding: 10px 20px; color: rgb(27, 27, 27); font-weight: 600; cursor: pointer;">Annule</button>
             </div>
@@ -190,11 +191,13 @@
         </div>
     </div>
 
+<script src="script.js"></script>
+
 
 </body>
 
 
-    <script src="script.js"></script>
+    
 
 
 </html>
