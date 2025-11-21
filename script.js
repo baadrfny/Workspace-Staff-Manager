@@ -1,3 +1,4 @@
+
 const EnregistrerBtn = document.querySelector(".EnregistrerBtn");
 const AnnuleBtn = document.querySelector(".AnnuleBtn");
 const addModal = document.querySelector("#addModal");
@@ -33,7 +34,7 @@ const salleSpecialMap = {
     "archivesDiv": "Manager"
 };
 
-const nonEffect = [];
+let nonEffect = JSON.parse(localStorage.getItem("employees")) || [];
 
 
 function isWorkerAssigned(workerId) {
@@ -232,9 +233,15 @@ select.onchange = function() {
     const RecMaxLimit = 3;
     const currentCount = workerPlace.querySelectorAll(".worker-info").length;
 
+    if (currentCount == 0) {
+        receptionDiv.style.border = "2px solid red";
+        receptionDiv.style.boxShadow = " 0 0 15px 8px solid red";
+    }
+
     if (currentCount >= 0) {
-        receptionDiv.style.border = "2px solid rgba(51, 255, 0, 0.62)";
-        receptionDiv.style.boxShadow = "0 0 13px 1px rgba(51, 255, 0, 0.62)";
+        receptionDiv.style.border = "none";
+        receptionDiv.style.boxShadow = "none";
+
     }
 
     if (currentCount >= RecMaxLimit) {
@@ -282,7 +289,7 @@ select.onchange = function() {
 
         select.querySelector(`option[value="${selectedUserId.toString()}"]`).remove();
 
-
+        
     }
 };
 
