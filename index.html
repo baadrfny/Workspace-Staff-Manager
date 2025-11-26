@@ -2,12 +2,16 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Workspace Staff Manager : Gérez et affectez votre personnel aux différentes salles (réception, conférence, archives) via notre interface de plan d'étage.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>Workspace Staff Manager</title>
 </head>
 <body>
+
+    
+
     <section>
         <div class="sideBar">
             <div class="firstSide">
@@ -18,11 +22,11 @@
             <div class="workerCountainer">
 
                 <div class="workerCard">
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid gray; padding: 20px; border-radius: 10px; margin: 10px">
-                        <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?cs=srgb&dl=pexels-stefanstefancik-91227.jpg&fm=jpg" style="width: 100px; border-radius: 100%; height: 100px;" alt="">
+                    <!-- <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid gray; padding: 20px; border-radius: 10px; margin: 10px">
+                        <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?cs=srgb&dl=pexels-stefanstefancik-91227.jpg&fm=jpg" style="width: 100px; border-radius: 100%; height: 100px;" alt="Badr" fetchpriority="high">
                         <h3>Badr Fenni</h3>
                         <p>recepteur</p>
-                    </div>
+                    </div> -->
 
 
 
@@ -39,11 +43,11 @@
              <!-- ----------------------------------------- -->
             <div id="divCountainer1">
                 <div class="boxCon conferenceDiv">
-                    <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><i class="fa-regular fa-building"></i> Salle de conférence</h4>
+                    <h3 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><i class="fa-regular fa-building"></i> Salle de conférence</h3>
                     <div class="workerPlace">
                         <p class="emptyP">This place is empty</p>
                     </div>
-                    <select  class="userSelect">
+                    <select  class="userSelect" aria-label="Sélectionner un employé pour la Salle de conférence">
                         <option value="" class="nonEffectSelect">Selectionner</option>
                     </select>
                 </div>
@@ -51,14 +55,14 @@
                 <!-- ----------------------------------------- -->
 
                 <div class="box receptionDiv recDiv">
-                    <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Réception</h4>
+                    <h3 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Réception</h3>
                     
                     <div class="workerPlace">
                         <p class="emptyP">This place is empty</p>
                         
                     </div>
 
-                    <select  class="userSelect">
+                    <select  class="userSelect" aria-label="Sélectionner un employé pour la Salle de conférence">
                         <option value="" class="nonEffectSelect">Selectionner</option>
                     </select>
                 </div>
@@ -66,14 +70,14 @@
                  <!-- ----------------------------------------- -->
 
                 <div class="box serveursDiv">
-                    <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle des serveurs</h4>
+                    <h3 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle des serveurs</h3>
                     
                     <div class="workerPlace">
                         <p class="emptyP">This place is empty</p>
                         
                     </div>
 
-                    <select  class="userSelect">
+                    <select  class="userSelect" aria-label="Sélectionner un employé pour la Salle de conférence">
                         <option value="" class="nonEffectSelect">Selectionner</option>
                     </select>
                 </div>
@@ -82,11 +86,11 @@
                 </div>
                  <div id="divCountainer2">
                     <div class="box securiteDiv">
-                        <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle de sécurité</h4>
+                        <h3 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle de sécurité</h3>
                         <div class="workerPlace">
                             <p class="emptyP">This place is empty</p>
                         </div>
-                        <select  class="userSelect">
+                        <select  class="userSelect" aria-label="Sélectionner un employé pour la Salle de conférence">
                             <option value="" class="nonEffectSelect">Selectionner</option>
                         </select>
                     </div>
@@ -94,11 +98,11 @@
                      <!-- ----------------------------------------- -->
 
                     <div class="boxPer personnelDiv">
-                        <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle du personnel</h4>
+                        <h3 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle du personnel</h3>
                         <div class="workerPlace">
                             <p class="emptyP">This place is empty</p>
                         </div>
-                        <select  class="userSelect">
+                        <select  class="userSelect" aria-label="Sélectionner un employé pour la Salle de conférence">
                             <option value="" class="nonEffectSelect">Selectionner</option>
                         </select>
                     </div>
@@ -106,11 +110,11 @@
                      <!-- ----------------------------------------- -->
 
                     <div class="box archivesDiv">
-                        <h4 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle d’archives</h4>
+                        <h3 style="color: rgb(237, 237, 237); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Salle d’archives</h3>
                         <div class="workerPlace" >
                             <p class="emptyP">This place is empty</p>
                         </div>
-                        <select  class="userSelect">
+                        <select  class="userSelect" aria-label="Sélectionner un employé pour la Salle de conférence">
                             <option value="" class="nonEffectSelect">Selectionner</option>
                         </select>
                     </div>
@@ -138,6 +142,7 @@
                 </select>
                 <input type="tel"  id="inputPhone" placeholder="Phone number">
                 <input type="text" id="urlInput" placeholder=" URL">
+                <input type="text" id="localInput" placeholder=" Local">
             </div>
 
             <div>
@@ -180,6 +185,7 @@
             <p id="infoSpecialModal"></p>
             <p id="infoEmailModal"></p>
             <p id="infoNumberModal"></p>
+            <p id="infoLocal"></p>
             <div id="expInfoContainer"></div>
 
         

@@ -34,7 +34,7 @@ section {
 }
 
 .btnAjouter {
-    background-color: #339f33;
+    background-color: #007a00; 
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
@@ -45,7 +45,7 @@ section {
 }
 
 .btnAjouter:hover {
-    background-color: #207020;
+    background-color: #005a00;
 }
 
 .workerCountainer {
@@ -160,15 +160,16 @@ section {
     gap: 10px;
 }
 
-.boxCon , .boxPer{
-    
+.no-border {
+    border: none !important;
+    box-shadow: none !important;
+}
 
-    border-radius: 20px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+
+.boxCon, 
+.boxPer {
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .box h4 {
