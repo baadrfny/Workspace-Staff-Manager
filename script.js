@@ -45,7 +45,13 @@ function isWorkerAssigned(workerId) {
 }
 
 
-    console.log(assignedWorkers)
+    console.log(roomConfig.receptionDiv.limit, "and " , roomConfig.conferenceDiv.limit , "and");
+
+    employees.forEach(emp => {
+    console.log(emp.name, emp.special);
+});
+
+
 
 
 function assignWorker(workerId) {
@@ -69,7 +75,7 @@ function unassignWorker(workerId) {
 
 // Experience Handler
 function setupExperienceHandler() {
-    
+
     const addExpBtn = document.getElementById("addExpBtn");
     const expContainer = document.getElementById("expContainer");
 
