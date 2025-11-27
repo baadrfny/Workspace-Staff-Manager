@@ -45,11 +45,17 @@ function isWorkerAssigned(workerId) {
 }
 
 
-    console.log(roomConfig.receptionDiv.limit, "and " , roomConfig.conferenceDiv.limit , "and");
+//     console.log(roomConfig.receptionDiv.limit, "and " , roomConfig.conferenceDiv.limit , "and");
 
-    employees.forEach(emp => {
-    console.log(emp.name, emp.special);
-});
+//     employees.forEach(emp => {
+//     console.log(emp.name, emp.special);
+
+//     let maxRoom = null;
+//     let maxCount = 0;
+
+    
+
+// });
 
 
 
